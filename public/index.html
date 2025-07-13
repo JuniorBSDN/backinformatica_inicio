@@ -284,45 +284,35 @@
     </footer>
 
     <script>
-       document.getElementById("#denunciaForm").addEventListener('submit', function(e) {
-    e.preventDefault();
+ document.querySelector("#denunciaForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    const crimeType = document.getElementById("#crimeType").value;
-    const location = document.getElementById("#location").value;
-    const description = document.getElementById("#description").value;
-    const anonymous = document.getElementById("#anonymous").checked;
-
-    if (!crimeType || !location || !description) {
-        alert('Por favor, preencha todos os campos obrigatórios marcados com *');
-        return;
+  const dados = { 
+    crimeType: document.querySelector("#crimeType").value.trim(),
+    location: document.querySelector("#location").value.trim(),
+    description: document.querySelector("#description").value.trim(),
+    anonymous: document.querySelector("#anonymous").value.trim(),
+  };
+           
+  fetch("/api/denuncias", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dados)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === "sucesso") {
+      alert("Denúncia enviada com sucesso!");
+      document.querySelector("#denunciaForm").reset();
+    } else {
+      alert("Erro: " + data.mensagem);
     }
-
-    fetch('/api/denuncia', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            crimeType,
-            location,
-            description,
-            anonymous
-        })
-    })
-    .then(response => {
-        if (!response.ok) throw new Error('Erro ao enviar denúncia.');
-        return response.json();
-    })
-    .then(data => {
-        alert('Denúncia enviada com sucesso!');
-        this.reset();
-    })
-    .catch(error => {
-        console.error(error);
-        alert('Erro ao enviar denúncia. Tente novamente.');
-    });
+  })
+  .catch(err => {
+    console.error("Erro:", err);
+    alert("Erro de conexão ao enviar denúncia.");
+  });
 });
-
     </script>
 </body>
 </html>
