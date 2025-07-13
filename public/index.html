@@ -284,13 +284,13 @@
     </footer>
 
     <script>
-       document.getElementById('denunciaForm').addEventListener('submit', function(e) {
+       document.getElementById("#denunciaForm").addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const crimeType = document.getElementById('crimeType').value;
-    const location = document.getElementById('location').value;
-    const description = document.getElementById('description').value;
-    const anonymous = document.getElementById('anonymous').checked;
+    const crimeType = document.getElementById("#crimeType").value;
+    const location = document.getElementById("#location").value;
+    const description = document.getElementById("#description").value;
+    const anonymous = document.getElementById("#anonymous").checked;
 
     if (!crimeType || !location || !description) {
         alert('Por favor, preencha todos os campos obrigatórios marcados com *');
