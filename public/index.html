@@ -284,108 +284,45 @@
     </footer>
 
     <script>
-        // FAQ toggle functionality
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const answer = button.nextElementSibling;
-                const icon = button.querySelector('i');
+       document.getElementById('denunciaForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-                // Toggle answer visibility
-                answer.classList.toggle('hidden');
+    const crimeType = document.getElementById('crimeType').value;
+    const location = document.getElementById('location').value;
+    const description = document.getElementById('description').value;
+    const anonymous = document.getElementById('anonymous').checked;
 
-                // Rotate icon
-                if (answer.classList.contains('hidden')) {
-                    icon.style.transform = 'rotate(0deg)';
-                } else {
-                    icon.style.transform = 'rotate(180deg)';
-                }
+    if (!crimeType || !location || !description) {
+        alert('Por favor, preencha todos os campos obrigatórios marcados com *');
+        return;
+    }
 
-                // Close other open FAQs
-                document.querySelectorAll('.faq-question').forEach(otherButton => {
-                    if (otherButton !== button) {
-                        otherButton.nextElementSibling.classList.add('hidden');
-                        otherButton.querySelector('i').style.transform = 'rotate(0deg)';
-                    }
-                });
-            });
-        });
+    fetch('/api/denuncia', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            crimeType,
+            location,
+            description,
+            anonymous
+        })
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Erro ao enviar denúncia.');
+        return response.json();
+    })
+    .then(data => {
+        alert('Denúncia enviada com sucesso!');
+        this.reset();
+    })
+    .catch(error => {
+        console.error(error);
+        alert('Erro ao enviar denúncia. Tente novamente.');
+    });
+});
 
-        // Form submission
-        document.getElementById('denunciaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Simple validation
-            const crimeType = document.getElementById('crimeType').value;
-            const location = document.getElementById('location').value;
-            const description = document.getElementById('description').value;
-
-            if (!crimeType || !location || !description) {
-                alert('Por favor, preencha todos os campos obrigatórios marcados com *');
-                return;
-            }
-
-            // In a real application, you would send the data to a server here
-            alert('Denúncia enviada com sucesso! Obrigado por contribuir com o meio ambiente.');
-            this.reset();
-        });
-
-        // File upload interaction
-        const fileInput = document.getElementById('fileInput');
-        const fileDropArea = fileInput.previousElementSibling;
-
-        fileDropArea.addEventListener('click', () => fileInput.click());
-
-        fileInput.addEventListener('change', function() {
-            if (this.files.length > 0) {
-                fileDropArea.innerHTML = 
-                    <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
-                    <p class="text-gray-700">${this.files.length} arquivo(s) selecionado(s)</p>
-                    <p class="text-gray-500 text-sm">Clique para alterar</p>
-                ;
-            }
-        });
-
-        // Drag and drop functionality
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            fileDropArea.addEventListener(eventName, preventDefaults, false);
-        });
-
-        function preventDefaults(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-
-        ['dragenter', 'dragover'].forEach(eventName => {
-            fileDropArea.addEventListener(eventName, highlight, false);
-        });
-
-        ['dragleave', 'drop'].forEach(eventName => {
-            fileDropArea.addEventListener(eventName, unhighlight, false);
-        });
-
-        function highlight() {
-            fileDropArea.classList.add('border-green-500', 'bg-green-50');
-        }
-
-        function unhighlight() {
-            fileDropArea.classList.remove('border-green-500', 'bg-green-50');
-        }
-
-        fileDropArea.addEventListener('drop', handleDrop, false);
-
-        function handleDrop(e) {
-            const dt = e.dataTransfer;
-            const files = dt.files;
-            fileInput.files = files;
-
-            if (files.length > 0) {
-                fileDropArea.innerHTML = 
-                    <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
-                    <p class="text-gray-700">${files.length} arquivo(s) selecionado(s)</p>
-                    <p class="text-gray-500 text-sm">Clique para alterar</p>
-                ;
-            }
-        }
     </script>
 </body>
 </html>
