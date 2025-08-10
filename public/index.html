@@ -3,12 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>back_informática</title>
+    <title>BACK INFORMATICA - Soluções Tecnológicas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Verdana, sans-serif; }
+
+    .mySlides { display: none; }
+
+    /* Slideshow container */
+    .slideshow-container {
+      width: 100vw;
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slideshow-container img {
+      width: 95%;
+      height: 50%;
+      object-fit: cover;
+    }
+
+    /* Caption text */
+    .text {
+      color: #f2f2f2;
+      font-size: 20px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 60px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active {
+      background-color: #717171;
+    }
+
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
+
+    @media only screen and (max-width: 300px) {
+      .text { font-size: 11px }
+    }
+
+    .dots-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+
         .gradient-bg {
-            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            background: linear-gradient(135deg, #222222 0%, #1e40af 100%);
         }
         .tech-card:hover {
             transform: translateY(-10px);
@@ -40,16 +112,16 @@
     <!-- Header -->
     <header class="gradient-bg text-white">
         <div class="container mx-auto px-6 py-12">
-           <header class="gradient-bg text-white shadow-lg">
         <div class="container mx-auto px-4 py-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="flex items-center mb-4 md:mb-0">
-                                        <img src="https://art.pixilart.com/thumb/sr29f084cb0bbaws3.png" alt="Tecnologia" class="w-64 md:w-80 floating", style="width: 50px;">
+                    <img src="https://art.pixilart.com/thumb/sr29f084cb0bbaws3.png" alt="Tecnologia" class="w-64 md:w-80 floating", style="width: 50px;">
                     <div>
                         <h1 class="text-2xl font-bold">BACK INFORMATICA</h1>
-                        <p class="text-sm opacity-80">Soluções tecnológicas para todos !</p>
+                        <p class="text-sm opacity-80">Soluções tecnológicas para todos</p>
                     </div>
                 </div>
+
                 <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
                     <div class="flex items-center">
                         <i class="fas fa-map-marker-alt mr-2"></i>
@@ -62,43 +134,59 @@
                     <a href="https://backinformaticavigia.vercel.app/"
    class="message-btn bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-blue-50"
    target="_blank" rel="noopener noreferrer">
-    Solicitar Atendimento
+    Solicitar Suporte Técnico
 </a>
                 </div>
             </div>
         </div>
-    </header>
 
-            <!-- Hero Section -->
-            <div class="mt-20 md:mt-32 flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-12 md:mb-0">
-                    <div class="container mx-auto px-4 text-center">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">15 anos de excelência em soluções tecnológicas</h2>
-                        <p class="text-xl mb-8 max-w-3xl mx-auto">Confiabilidade, pontualidade e expertise para resolver os problemas mais complexos relacionados a sistemas computacionais</p>
-                        <div class="flex flex-wrap justify-center gap-4">
-                             <div class="bg-white text-blue-800 px-6 py-3 rounded-full font-semibold flex items-center">
-                                 <i class="fas fa-desktop mr-2">
-                                 </i> Assistência Técnica
-                            </div>
-                            <div class="bg-white text-blue-800 px-6 py-3 rounded-full font-semibold flex items-center">
-                                <i class="fas fa-code mr-2"></i> Análise e Desenvolvimento
-                            </div>
-                            <div class="bg-white text-blue-800 px-6 py-3 rounded-full font-semibold flex items-center">
-                                <i class="fas fa-headset mr-2"></i> Atendimento Field
-                            </div>
-                            <div class="bg-white text-blue-800 px-6 py-3 rounded-full font-semibold flex items-center">
-                                <i class="fas fa-headset mr-2"></i> Assistência Remota
-                            </div>
 
-            </div>
-        </div>
+            <div class="slideshow-container">
 
+                <div class="mySlides fade">
+                    <div class="numbertext">Com o <strong>atendimento field</strong>, levamos a solução<br> até você prestando um atendimento rápido e<br> eficiente, onde for preciso.</div>
+                    <img src="https://img.freepik.com/fotos-gratis/experiencia-em-programacao-com-pessoa-a-trabalhar-com-codigos-no-computador_23-2150010125.jpg?semt=ais_hybrid&w=740">
                 </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <img src="https://img.freepik.com/fotos-gratis/experiencia-em-programacao-com-pessoa-a-trabalhar-com-codigos-no-computador_23-2150010125.jpg?semt=ais_hybrid&w=740" alt="Tecnologia", style="width: 500px;">
-
+                <div class="mySlides fade">
+                    <div class="numbertext">Na <strong>assistência técnica</strong>, o diagnóstico e preciso,<br> o reparo e garantido, pois cuidamos do seu <br> equipamento como se fosse nosso.</div>
+                    <img src="https://plus.unsplash.com/premium_photo-1661882403999-46081e67c401?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZ3JhbWElQzMlQTclQzMlQTNvfGVufDB8fDB8fHww">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext"> Com a <strong>assistência Remota</strong> usamos a rede para um <br>suporte otimizado, rápido e eficiente sem sair do seu lugar.</div>
+                    <img src="https://static.vecteezy.com/ti/fotos-gratis/t1/29753287-computador-eletronico-lasca-com-processador-transistores-resistores-e-microchips-abstrato-oi-tech-fundo-foto.jpg">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext"><strong>Desenvolvemos Soluções</strong> para Processos Internos <br> Transformando ideias em sistemas inteligentes e inovadores </div>
+                    <img src="https://wallpapers.com/images/featured/tecnologia-da-informacao-iw8od0peecvcghx7.jpg">
                 </div>
             </div>
+            <div class="dots-container">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+<script>
+  let slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 10000); // Muda a cada 2 segundos
+  }
+</script>
         </div>
     </header>
 
@@ -143,7 +231,7 @@
                     <div class="text-blue-600 mb-4">
                         <i class="fas fa-code text-4xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Análise e desenvolvimento</h3>
+                    <h3 class="text-xl font-bold mb-3">Projetos de Software</h3>
                     <p class="text-gray-600">Desenvolvimento de sistemas personalizados, aplicativos e soluções digitais sob medida para seu negócio.</p>
                 </div>
             </div>
@@ -242,104 +330,49 @@
                         <h3 class="text-xl font-bold mb-2">Toten </h3>
                         <p class="text-gray-600 mb-4">Manutenção corretiva para diversos Tipos de Sistemas computacionais.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">PC GAMES</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">NOTEBOOKS</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">DESKTOP</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Toten</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Linux</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Desktop</span>
                         </div>
                     </div>
                 </div>
             </div>
-<div class="text-center mt-12">
-<a href="https://backinformaticavigia.vercel.app/"
-   class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-bold transition duration-300"
-   target="_blank" rel="noopener noreferrer">
-    Solicitar Suporte Técnico
-    </a>            
-     </div>
 
-    </div>
-    </section>
 
-     <!-- Testimonials Section -->
-    <section class="py-20 bg-blue-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">O Que Nossos Clientes Dizem</h2>
-                <p class="text-xl opacity-90 max-w-3xl mx-auto">Depoimentos de quem já confiou em nossos serviços</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-filter backdrop-blur-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 text-xl mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="mb-6">"Excelente, muito prestativo e nos ajudou super rapidinho."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4">
-                            <span class="text-xl font-bold">VC</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Vigia Calçados</h4>
-                            <p class="text-sm opacity-80"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-filter backdrop-blur-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 text-xl mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <p class="mb-6">"Suporte rápido e eficiente. Resolveram nosso problema de rede em poucas horas quando outros levaram dias sem solução."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4">
-                            <span class="text-xl font-bold">AS</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Ana Souza</h4>
-                            <p class="text-sm opacity-80">Gerente de TI - ABC Comércio</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-filter backdrop-blur-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 text-xl mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                    <p class="mb-6">"Nosso aplicativo desenvolvido pela Back superou todas as expectativas. Ótimo custo-benefício e equipe extremamente competente."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4">
-                            <span class="text-xl font-bold">RM</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Ricardo Mendes</h4>
-                            <p class="text-sm opacity-80">CEO - Startup Food</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
+
+
+
+
+    <!-- Message Modal -->
+    <div id="messageModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">Envie sua Mensagem</h3>
+                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form>
+                <div class="mb-4">
+                    <label for="modalName" class="block text-gray-700 mb-2">Nome</label>
+                    <input type="text" id="modalName" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="modalEmail" class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" id="modalEmail" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-6">
+                    <label for="modalMessage" class="block text-gray-700 mb-2">Mensagem</label>
+                    <textarea id="modalMessage" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded hover:bg-blue-700 transition">
+                    Enviar
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
@@ -354,36 +387,28 @@
                         Soluções tecnológicas completas para impulsionar seu negócio no mundo digital.
                     </p>
                 </div>
-
-               <div class="mb-8 md:mb-0">
-                    <h3 class="text-lg font-bold mb-4">Avalie nossos serviços</h3>
-                  <p> * Click aqui para Recomendar nossos <br> serviços ou foque com a camera<br> no codigo abaixo!</p>
-                  <img src="data:image/png;base64,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" alt="Imagem em base64" />
-                </div>
-
-                
                 <div class="mb-8 md:mb-0">
                     <h3 class="text-lg font-bold mb-4">Serviços</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="text-gray-400 hover:text-white transition">Assistência Técnica</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition">Atendimento Field</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition">Atendimento Remoto</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Analises e desenvolvimento</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Projetos de Software</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-4">Redes Sociais</h3>
                     <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/backinformatica2013" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://backinformaticavigia.blogspot.com/" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-400 transition">
-                            <i class="fab fa-Blogger"></i>
+                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="https://www.instagram.com/back_informatica/" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
+                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/airton-t-i-94319026a/" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 transition">
+                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 transition">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
