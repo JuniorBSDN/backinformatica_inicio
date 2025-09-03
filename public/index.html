@@ -1,450 +1,530 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BACK INFORMATICA - Soluções Tecnológicas</title>
+    <title>Back Informática Vigia</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace();
+</script>
     <style>
-            * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Verdana, sans-serif; }
-
-    .mySlides { display: none; }
-
-    /* Slideshow container */
-    .slideshow-container {
-      width: 100vw;
-      height: 500px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .slideshow-container img {
-      width: 95%;
-      height: 50%;
-      object-fit: cover;
-    }
-
-    /* Caption text */
-    .text {
-      color: #f2f2f2;
-      font-size: 20px;
-      padding: 8px 12px;
-      position: absolute;
-      bottom: 8px;
-      width: 100%;
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.6);
-    }
-
-    .numbertext {
-      color: #f2f2f2;
-      font-size: 60px;
-      padding: 8px 12px;
-      position: absolute;
-      top: 0;
-    }
-
-    .dot {
-      height: 15px;
-      width: 15px;
-      margin: 0 2px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.6s ease;
-    }
-
-    .active {
-      background-color: #717171;
-    }
-
-    .fade {
-      animation-name: fade;
-      animation-duration: 1.5s;
-    }
-
-    @keyframes fade {
-      from {opacity: .4}
-      to {opacity: 1}
-    }
-
-    @media only screen and (max-width: 300px) {
-      .text { font-size: 11px }
-    }
-
-    .dots-container {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-        .gradient-bg {
-            background: linear-gradient(135deg, #222222 0%, #1e40af 100%);
+         * { box-sizing: border-box; margin: 0; padding: 0; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
         }
-        .tech-card:hover {
-            transform: translateY(-10px);
+        .card-hover:hover {
+            transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        .message-btn {
+        .transition-slow {
             transition: all 0.3s ease;
         }
-        .message-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-        }
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+
+         .mySlides {
+    display: none;
+}
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
     </style>
 </head>
-<body class="font-sans bg-gray-50 text-gray-800">
-    <!-- Header -->
-    <header class="gradient-bg text-white">
-        <div class="container mx-auto px-6 py-12">
-        <div class="container mx-auto px-4 py-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center mb-4 md:mb-0">
-                    <img src="https://art.pixilart.com/thumb/sr29f084cb0bbaws3.png" alt="Tecnologia" class="w-64 md:w-80 floating", style="width: 50px;">
-                    <div>
-                        <h1 class="text-2xl font-bold">BACK INFORMATICA</h1>
-                        <p class="text-sm opacity-80">Soluções tecnológicas para todos</p>
-                    </div>
-                </div>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+   <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-24 items-center">
+           <div class="flex items-center">
+               <div class="flex-shrink-0 flex items-center">
+                   <img src="https://art.pixilart.com/sr29f084cb0bbaws3.png" alt="Logo" class="h-12 w-12">
+                   <div class="ml-4">
+                       <span class="text-2xl font-bold text-gray-900">Back Informatica</span>
+                       <p class="text-base text-gray-500 -mt-1">Soluções tecnológicas</p>
+                   </div>
+               </div>
+           </div>
 
-                <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+            <div class="hidden md:ml-6 md:flex md:items-center md:space-x-12">
                     <div class="flex items-center">
-                        <i class="fas fa-map-marker-alt mr-2"></i>
-                        <span>Tv. Lauro Sodré, 113 - Centro, Vigia-PA</span>
+                        <i class="fas fa-map-marker-alt mr-2 text-xl text-gray-600"></i>
+                        <span class="text-base text-gray-700">Tv. Lauro Sodré, 113 - Centro, Vigia-PA</span>
                     </div>
                     <div class="flex items-center">
-                        <i class="fas fa-phone-alt mr-2"></i>
-                        <span>(91) 98325-2639</span>
+                        <i class="fas fa-phone-alt mr-2 text-xl text-gray-600"></i>
+                        <span class="text-base text-gray-700">(91) 98325-2639</span>
                     </div>
-                    <a href="https://backinformaticavigia.vercel.app/"
-   class="message-btn bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-blue-50"
-   target="_blank" rel="noopener noreferrer">
-    Solicitar Suporte Técnico
-</a>
-                </div>
+                  <a href="https://backinformaticavigia.vercel.app/"
+                    class="bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold py-4 px-12 rounded-full shadow-lg transform transition hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                    target="_blank" rel="noopener noreferrer">
+                    Solicitar Suporte Técnico
+                  </a>
             </div>
-        </div>
-
-
-            <div class="slideshow-container">
-
-                <div class="mySlides fade">
-                    <div class="numbertext">Com o <strong>atendimento field</strong>, levamos a solução<br> até você prestando um atendimento rápido e<br> eficiente, onde for preciso.</div>
-                    <img src="https://img.freepik.com/fotos-gratis/experiencia-em-programacao-com-pessoa-a-trabalhar-com-codigos-no-computador_23-2150010125.jpg?semt=ais_hybrid&w=740">
-                </div>
-                <div class="mySlides fade">
-                    <div class="numbertext">Na <strong>assistência técnica</strong>, o diagnóstico e preciso,<br> o reparo e garantido, pois cuidamos do seu <br> equipamento como se fosse nosso.</div>
-                    <img src="https://plus.unsplash.com/premium_photo-1661882403999-46081e67c401?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZ3JhbWElQzMlQTclQzMlQTNvfGVufDB8fDB8fHww">
-                </div>
-                <div class="mySlides fade">
-                    <div class="numbertext"> Com a <strong>assistência Remota</strong> usamos a rede para um <br>suporte otimizado, rápido e eficiente sem sair do seu lugar.</div>
-                    <img src="https://static.vecteezy.com/ti/fotos-gratis/t1/29753287-computador-eletronico-lasca-com-processador-transistores-resistores-e-microchips-abstrato-oi-tech-fundo-foto.jpg">
-                </div>
-                <div class="mySlides fade">
-                    <div class="numbertext"><strong>Desenvolvemos Soluções</strong> para Processos Internos <br> Transformando ideias em sistemas inteligentes e inovadores </div>
-                    <img src="https://wallpapers.com/images/featured/tecnologia-da-informacao-iw8od0peecvcghx7.jpg">
-                </div>
-            </div>
-            <div class="dots-container">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-<script>
-  let slideIndex = 0;
-  showSlides();
-
-  function showSlides() {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 10000); // Muda a cada 2 segundos
-  }
-</script>
-        </div>
-    </header>
-
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Nossos Serviços</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Oferecemos soluções completas em tecnologia para impulsionar seu negócio</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service 1 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:border-b-4 hover:border-blue-500">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fas fa-headset text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Atendimento Field</h3>
-                    <p class="text-gray-600">Relacionamento próximo e personalizado com nossos clientes, garantindo que todas as necessidades tecnológicas sejam atendidas com excelência.</p>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:border-b-4 hover:border-blue-500">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fas fa-tools text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Assistência Técnica</h3>
-                    <p class="text-gray-600">Manutenção preventiva e corretiva para hardware e software, com técnicos especializados e peças de qualidade.</p>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:border-b-4 hover:border-blue-500">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fas fa-desktop text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Suporte Remoto</h3>
-                    <p class="text-gray-600">Soluções rápidas e eficientes à distância, minimizando tempo de inatividade e maximizando sua produtividade.</p>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:border-b-4 hover:border-blue-500">
-                    <div class="text-blue-600 mb-4">
-                        <i class="fas fa-code text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Projetos de Software</h3>
-                    <p class="text-gray-600">Desenvolvimento de sistemas personalizados, aplicativos e soluções digitais sob medida para seu negócio.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-     <!-- Contact Section -->
-    <section id="contato" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-4">Estamos aqui!</h2>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.7335432442796!2d-48.14665862546079!3d-0.853120435305211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a681b18b41ff55%3A0x263b8c60ff75bbf4!2sBack%20Informatica!5e1!3m2!1spt-BR!2sbr!4v1751932103489!5m2!1spt-BR!2sbr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="sobre" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-12 md:mb-0">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3242/3242257.png" alt="Sobre Nós" class="w-full max-w-md mx-auto">
-                </div>
-                <div class="md:w-1/2 md:pl-12">
-                    <h2 class="text-3xl font-bold mb-6">Sobre a BACK INFORMATICA</h2>
-                    <p class="text-gray-700 mb-6">
-                        Somos uma empresa especializada em soluções tecnológicas, comprometida em oferecer serviços de alta qualidade para empresas de todos os portes.
-                    </p>
-                    <p class="text-gray-700 mb-6">
-                        Com uma equipe de profissionais altamente qualificados e experientes, estamos prontos para resolver os desafios tecnológicos do seu negócio.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-600 mr-2"></i>
-                            <span>Atendimento personalizado</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-600 mr-2"></i>
-                            <span>Equipe especializada</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-600 mr-2"></i>
-                            <span>Soluções inovadoras</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-blue-600 mr-2"></i>
-                            <span>Suporte 24/7</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-<!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Nosso Portfólio</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Alguns dos projetos que desenvolvemos para nossos clientes</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <img src="https://i.imgur.com/2RVEV43.png" alt="Projeto 1" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">SysEmergênciaPy</h3>
-                        <p class="text-gray-600 mb-4">Versão DEMO do projeto de softwere, criado para atender a necessidae de um hospital em emergência</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">ProjetoDEMO</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Desktop</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <img src="https://i.imgur.com/EanzgQQ.png" alt="Projeto 2" class="w-full h-48 object-cover", style="width: 360px; height: 190px;">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">MicroSisPy</h3>
-                        <p class="text-gray-600 mb-4">micro sistema e uma replica da antiga caixa registradora, desenvolvida para uma panificadora, que buscava uma solução prática e direta para registrar valores de vendas, sem burocracia ou complexidade.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Desktop</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">app</span>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
-                    <img src="https://i.imgur.com/EJNU3u3.jpeg" alt="Projeto 3" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Toten </h3>
-                        <p class="text-gray-600 mb-4">Manutenção corretiva para diversos Tipos de Sistemas computacionais.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Toten</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Linux</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Desktop</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </section>
-
-
-
-
-    <!-- Message Modal -->
-    <div id="messageModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold">Envie sua Mensagem</h3>
-                <button id="closeModal" class="text-gray-500 hover:text-gray-700">
-                    <i class="fas fa-times"></i>
+            <div class="-mr-2 flex items-center md:hidden">
+                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <i data-feather="menu" class="h-6 w-6"></i>
                 </button>
             </div>
-            <form>
-                <div class="mb-4">
-                    <label for="modalName" class="block text-gray-700 mb-2">Nome</label>
-                    <input type="text" id="modalName" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-                <div class="mb-4">
-                    <label for="modalEmail" class="block text-gray-700 mb-2">Email</label>
-                    <input type="email" id="modalEmail" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-                <div class="mb-6">
-                    <label for="modalMessage" class="block text-gray-700 mb-2">Mensagem</label>
-                    <textarea id="modalMessage" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded hover:bg-blue-700 transition">
-                    Enviar
-                </button>
-            </form>
+        </div>
+    </div>
+</nav>
+<div class="slideshow-container relative w-full overflow-hidden">
+    <div class="mySlides fade relative w-full">
+        <img src="https://img.freepik.com/fotos-premium/conceito-de-reciclagem-ecologico-com-folhas-e-plastico-sobre-um-fundo-verde-de-madeira_1223942-7768.jpg?semt=ais_hybrid&w=740&q=80" class="w-full h-[36rem] object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
+                <span class="block mb-2">Com o <strong>Serviço sustentável de reaproveitamento e recarga de cartuchos de impressão </strong></span>
+                <span class="block text-base md:text-lg font-normal">reduzindo custos e o impacto ambiental.</span>
+            </div>
+        </div>
+    </div>
+    <div class="mySlides fade relative w-full">
+        <img src="https://img.freepik.com/fotos-gratis/natureza-morta-de-pilha-de-documentos_23-2151088820.jpg?semt=ais_hybrid&w=740&q=80" class="w-full h-[36rem] object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
+                <span class="block mb-2">Produção e digitalização de textos com rapidez e precisão</span>
+                <span class="block text-base md:text-lg font-normal">facilitando a organização e formalização de informações.</span>
+            </div>
+        </div>
+    </div>
+    <div class="mySlides fade relative w-full">
+        <img src="https://www.meupositivo.com.br/panoramapositivo/wp-content/uploads/2022/11/field-service.jpeg" class="w-full h-[36rem] object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
+                <span class="block mb-2">Com o <strong>Atendimento Field</strong>, levamos a solução até você.</span>
+                <span class="block text-base md:text-lg font-normal">Atendimento rápido e eficiente, onde for preciso.</span>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between">
-                <div class="mb-8 md:mb-0">
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fas fa-laptop-code text-2xl"></i>
-                        <span class="text-xl font-bold">BACK INFORMATICA</span>
+    <div class="mySlides fade relative w-full">
+        <img src="https://img.freepik.com/fotos-premium/tecnico-reparando-computador-portatil-quebrado-com-chave-de-fenda_185126-924.jpg" class="w-full h-[36rem] object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
+                <span class="block mb-2">Na <strong>Assistência Técnica</strong>, o diagnóstico é preciso.</span>
+                <span class="block text-base md:text-lg font-normal">Cuidamos do seu equipamento como se fosse nosso, com reparo garantido.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mySlides fade relative w-full">
+        <img src="https://img.freepik.com/fotos-gratis/vista-traseira-do-programador-trabalhando-a-noite-toda_1098-18697.jpg?semt=ais_items_boosted&w=740" class="w-full h-[36rem] object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
+                <span class="block mb-2">Com a <strong>Assistência Remota</strong>, o suporte é otimizado.</span>
+                <span class="block text-base md:text-lg font-normal">Rápido e eficiente, sem você precisar sair do lugar.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mySlides fade relative w-full">
+        <img src="https://img.freepik.com/fotos-premium/programming-hintergrund-mit-person-die-mit-codes-am-computer-arbeitet_23-2150010150.jpg?semt=ais_hybrid&w=740&q=80" class="w-full h-[36rem] object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div class="text-white text-center text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
+                <span class="block mb-2"><strong>Desenvolvemos Soluções</strong> para o seu negócio.</span>
+                <span class="block text-base md:text-lg font-normal">Transformando ideias em sistemas inteligentes e inovadores.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="dots-container absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+        <span class="dot cursor-pointer h-3 w-3 bg-gray-400 rounded-full transition-all duration-300 hover:bg-white"></span>
+        <span class="dot cursor-pointer h-3 w-3 bg-gray-400 rounded-full transition-all duration-300 hover:bg-white"></span>
+        <span class="dot cursor-pointer h-3 w-3 bg-gray-400 rounded-full transition-all duration-300 hover:bg-white"></span>
+        <span class="dot cursor-pointer h-3 w-3 bg-gray-400 rounded-full transition-all duration-300 hover:bg-white"></span>
+        <span class="dot cursor-pointer h-3 w-3 bg-gray-400 rounded-full transition-all duration-300 hover:bg-white"></span>
+        <span class="dot cursor-pointer h-3 w-3 bg-gray-400 rounded-full transition-all duration-300 hover:bg-white"></span>
+    </div>
+
+    <div class="absolute bottom-12 right-8 animate-bounce">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+    </div>
+</div>
+    <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.mySlides');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlides() {
+        slides.forEach(slide => slide.style.display = 'none');
+        dots.forEach(dot => dot.classList.remove('bg-white'));
+
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+
+        slides[slideIndex - 1].style.display = 'block';
+        dots[slideIndex - 1].classList.add('bg-white');
+
+        setTimeout(showSlides, 15000); // Mude a imagem a cada 5 segundos
+    }
+
+    // Adiciona funcionalidade para os pontos
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            clearTimeout(timeout);
+            slideIndex = index;
+            showSlides();
+        });
+    });
+
+    showSlides();
+    </script>
+
+
+<!-- SOLUÇÕES -->
+    <div class="py-12 bg-white" id="negocios">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:text-center">
+            <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase" data-aos="fade-up">Seja bem-vindo!</h2>
+            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl" data-aos="fade-up" data-aos-delay="100">
+                Soluções e Serviços
+            </p>
+            <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto" data-aos="fade-up" data-aos-delay="200">
+                Conheça os serviços que oferecemos a você !
+            </p>
+        </div>
+
+        <div class="mt-10">
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+                <div class="pt-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-slow">
+                        <div class="-mt-6">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto">
+                                <i data-feather="monitor"></i>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">Assistência Técnica</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Serviço voltado para manutenção e reparo de computadores e notebooks, garantindo que seus equipamentos funcionem com desempenho e segurança.
+                            </p>
+                        </div>
                     </div>
-                    <p class="text-gray-400 max-w-xs">
-                        Soluções tecnológicas completas para impulsionar seu negócio no mundo digital.
-                    </p>
                 </div>
-                <div class="mb-8 md:mb-0">
-                    <h3 class="text-lg font-bold mb-4">Serviços</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Assistência Técnica</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Atendimento Field</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Atendimento Remoto</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Projetos de Software</a></li>
-                    </ul>
+
+                <div class="pt-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-slow">
+                        <div class="-mt-6">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto">
+                                <i data-feather="link"></i>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">Assistência Remota</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Atendimento rápido via internet, sem a necessidade de deslocamento, ideal para resolver problemas de forma prática e imediata.
+                            </p>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="pt-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-slow">
+                        <div class="-mt-6">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto">
+                                <i data-feather="map-pin"></i>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">Atendimento Field</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Suporte técnico presencial, com profissionais indo até a empresa ou residência do cliente para diagnósticos e soluções no local.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-slow">
+                        <div class="-mt-6">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto">
+                                <i data-feather="printer"></i>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">Recargas para Cartuchos HP</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Serviço sustentável de reaproveitamento e recarga de cartuchos de impressão, reduzindo custos e o impacto ambiental.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-slow">
+                        <div class="-mt-6">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto">
+                                <i data-feather="file-text"></i>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">Digitação de documentos</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Produção e digitalização de textos com rapidez e precisão, facilitando a organização e formalização de informações.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full card-hover transition-slow">
+                        <div class="-mt-6">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto">
+                                <i data-feather="code"></i>
+                            </div>
+                            <h3 class="mt-8 text-lg font-medium text-gray-900 text-center">Projetos de Softwares</h3>
+                            <p class="mt-5 text-base text-gray-500">
+                                Criação de softwares personalizados para atender às necessidades específicas do seu negócio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sobre -->
+
+<section id="sobre" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center">
+
+            <div class="md:w-1/2 mb-12 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+                <img src="https://i.imgur.com/CCD6F84.png" alt="Sobre Nós" class="w-full max-w-md mx-auto">
+            </div>
+
+            <div class="md:w-1/2 md:pl-12 " data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <h2 class="text-3xl font-bold mb-6">Sobre a BACK INFORMATICA</h2>
+                <p class="text-gray-700 mb-6">
+                    Somos especialistas em ajudar os nossos clientes a resolverem os problemas mais complexos
+                    relacionados a Sistemas computacionais.
+                </p>
+                <p class="text-gray-700 mb-6">
+                    Somos profissionais altamente qualificados com mais de 10 anos de expêriencia na area de Técnologia,
+                    estamos prontos para resolver os desafios tecnológicos do seu negócio.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- CLIENTES E PARCEIROS -->
+    <div class="py-12 bg-gray-50" id="catalogo">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase" data-aos="fade-up">Nossos</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl" data-aos="fade-up" data-aos-delay="100">
+                    Clientes e Parceiros
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    Espaço dedicado aos nossos clientes e parceiros que nos ajudam a crescer
+                </p>
+            </div>
+
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+                    <!-- LARI VARIEDADES -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg card-hover transition-slow" data-aos="fade-up" data-aos-delay="400">
+                        <div class="px-4 py-5 sm:p-6">
+                            <img src="https://i.imgur.com/Fmht6OV.jpeg" class="w-1/2 mx-auto" alt="Lari Variedades">
+
+                            <div class="mt-4">
+                                <p class="text-sm text-gray-500 text-center">
+                            Oculos, Relogios, bolsas, folheados, bijuterias e muito mais para o público feminino.
+                                </p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-center text-sm text-gray-500">
+                                <i data-feather="map-pin" class="mr-1.5 h-5 w-5 text-gray-400"></i>
+                                <p>Tv Lauro Sodré, 113 - Centro</p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-center text-sm text-gray-500">
+                                <i data-feather="phone" class="mr-1.5 h-5 w-5 text-gray-400"></i>
+                                <p>(91) 98200-5830</p>
+                            </div>
+
+                            <div class="mt-6 flex justify-center">
+                                <a href="https://www.instagram.com/lari__variedades/" target="_blank"
+                                class="inline-flex items-center px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-full shadow hover:bg-blue-700 transition">
+                                Visitar
+                               </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LEAL NET -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg card-hover transition-slow" data-aos="fade-up" data-aos-delay="500">
+                        <div class="px-4 py-5 sm:p-6">
+                            <img src="https://i.imgur.com/OLukbHP.png" class="w 0/2 mx-auto" alt="Leal Net">
+                            <div class="mt-4">
+                                <p class="text-sm text-gray-500 text-center">
+                                Internet rápida e suporte com excelência e qualidade para os Vigienses.
+                                </p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-center text-sm text-gray-500">
+                                <i data-feather="phone" class="mr-1.5 h-5 w-5 text-gray-400"></i>
+                                <p>(91) 99222-9503</p>
+                            </div>
+                            <div class="mt-6 flex justify-center">
+                                <a href="https://www.instagram.com/leal_net_vigia_oficial/" target="_blank"
+                                    class="inline-flex items-center px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-full shadow hover:bg-blue-700 transition">
+                                    Visitar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LABOCENTER -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg card-hover transition-slow" data-aos="fade-up" data-aos-delay="600">
+                        <div class="px-4 py-5 sm:p-6">
+                            <img src="https://i.imgur.com/hEKBJHw.png" class="w 0/2 mx-auto" alt="Labocenter">
+                            <div class="mt-4">
+                                <p class="text-sm text-gray-500 text-center">
+                                    Ideal para quem quer prevenir, diagnosticar ou acompanhar o tratamento de saúde.
+                                </p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-center text-sm text-gray-500">
+                                <i data-feather="map-pin" class="mr-1.5 h-5 w-5 text-gray-400"></i>
+                                <p>Av Barão do Guajará, 193 - Centro</p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-center text-sm text-gray-500">
+                                <i data-feather="phone" class="mr-1.5 h-5 w-5 text-gray-400"></i>
+                                <p>(91) 98049-5565</p>
+                            </div>
+                            <div class="mt-6 flex justify-center">
+                                <a href="https://www.instagram.com/labocenteribeiro_" target="_blank"
+                                class="inline-flex items-center px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-full shadow hover:bg-blue-700 transition">
+                                Visitar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JULIETE -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg card-hover transition-slow" data-aos="fade-up" data-aos-delay="400">
+                         <div class="px-4 py-5 sm:p-6">
+                             <img src="https://i.imgur.com/AHCe19Q.png" class="w-1/2 mx-auto" alt="Juliete">
+                             <div class="mt-4">
+                                 <p class="text-sm text-gray-500 text-center">
+                                    O que aprendemos torna-se parte de quem somos.
+                                </p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-center text-sm text-gray-500">
+                                <i data-feather="map-pin" class="mr-1.5 h-5 w-5 text-gray-400"></i>
+                                <p>Rua Noêmia Belém,12 - centro</p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-center text-sm text-gray-500">
+                                <i data-feather="phone" class="mr-1.5 h-5 w-5 text-gray-400"></i>
+                                <p>(91)982295984</p>
+                            </div>
+
+                            <div class="mt-6 flex justify-center">
+                                <a href="https://www.instagram.com/lari__variedades/" target="_blank"
+                                    class="inline-flex items-center px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-full shadow hover:bg-blue-700 transition">
+                                    Visitar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JC's FOODS -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg card-hover transition-slow" data-aos="fade-up" data-aos-delay="700">
+                        <div class="px-4 py-5 sm:p-6">
+                            <img src="https://i.imgur.com/R5fj2gh.png" class="w 0/2 mx-auto" alt="JC's Foods">
+
+                            <div class="mt-4">
+                                <p class="text-sm text-gray-500 text-center">
+                                 Hamburgueria 100% artesanal - venha experimentar alguns dos maiores lanches da cidade de até 30cm. Entregas sem taxa dentro da cidade de Vigia até o Valle.
+                                </p>
+                            </div>
+
+                            <div class="mt-4 flex items-center justify-center text-sm text-gray-500">
+                                <i data-feather="map-pin" class="mr-1.5 h-5 w-5 text-gray-400"></i>
+                                <p>Av. Barão do Guajará, Esquina com Marcionilo Alves</p>
+                            </div>
+                            <div class="mt-4 flex items-center justify-center text-sm text-gray-500">
+                                <i data-feather="map-pin" class="mr-1.5 h-5 w-5 text-gray-400"></i>
+                                <p>(91) 48996369774</p>
+                            </div>
+                            <div class="mt-6 flex justify-center">
+                                <a href="https://www.instagram.com/jcsfoods2020/" target="_blank"
+                                class="inline-flex items-center px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-full shadow hover:bg-blue-700 transition">
+                                Visitar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAPA DO GOOGLE -->
+  <section id="contato" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-4" data-aos="fade-up" data-aos-duration="1000">Onde estamos localizados</h2>
+
+        <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.7335432442796!2d-48.14665862546079!3d-0.853120435305211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a681b18b41ff55%3A0x263b8c60ff75bbf4!2sBack%20Informatica!5e1!3m2!1spt-BR!2sbr!4v1751932103489!5m2!1spt-BR!2sbr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+
                 <div>
-                    <h3 class="text-lg font-bold mb-4">Redes Sociais</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
-                            <i class="fab fa-facebook-f"></i>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Redes sociais</h3>
+                    <div class="mt-4 flex space-x-6">
+                        <a href="https://www.facebook.com/backinformatica2013" class="text-gray-400 hover:text-white">
+                            <i data-feather="facebook" class="h-6 w-6"></i>
                         </a>
-                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-400 transition">
-                            <i class="fab fa-twitter"></i>
+                        <a href="https://www.instagram.com/back_informatica/" class="text-gray-400 hover:text-white">
+                            <i data-feather="instagram" class="h-6 w-6"></i>
                         </a>
-                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 transition">
-                            <i class="fab fa-linkedin-in"></i>
+                        <a href="https://www.youtube.com/@backinformatica" class="text-gray-400 hover:text-white">
+                            <i data-feather="youtube" class="h-6 w-6"></i>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 BACK INFORMATICA. Todos os direitos reservados.</p>
+            <div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
+                <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
+                    &copy; Back Informática, desde 2013.
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Message Modal Functionality
-        const messageBtn = document.getElementById('messageBtn');
-        const messageModal = document.getElementById('messageModal');
-        const closeModal = document.getElementById('closeModal');
-
-        messageBtn.addEventListener('click', () => {
-            messageModal.classList.remove('hidden');
+        // Mobile menu toggle
+        document.querySelector('[aria-controls="mobile-menu"]').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         });
 
-        closeModal.addEventListener('click', () => {
-            messageModal.classList.add('hidden');
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
         });
 
-        // Close modal when clicking outside
-        messageModal.addEventListener('click', (e) => {
-            if (e.target === messageModal) {
-                messageModal.classList.add('hidden');
-            }
-        });
-
-        // Mobile menu toggle (placeholder - would need more implementation)
-        document.querySelector('button.md\\:hidden').addEventListener('click', () => {
-            alert('Menu mobile seria implementado aqui');
-        });
+        // Initialize feather icons
+        feather.replace();
     </script>
+
 </body>
 </html>
