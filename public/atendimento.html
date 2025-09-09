@@ -5,28 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solicitação de Atendimento - Back Informática</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome para ícone do botão -->
+    <script src="https://kit.fontawesome.com/SEU_CODIGO_KIT.js" crossorigin="anonymous"></script>
     <style>
-        /* Animação inicial de fade-in e subir */
-
-        .fade-slide-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.fade-slide-up.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+        /* Animação fade-in e slide-up */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeSlideUp {
+            animation: fadeSlideUp 0.8s ease forwards;
+        }
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-    <div id="form-container" class="bg-white shadow-xl rounded-xl p-8 max-w-lg w-full fade-slide-up">
-        <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Solicitação de Atendimento</h1>
+    <div id="form-container" class="bg-white shadow-xl rounded-xl p-8 max-w-lg w-full animate-fadeSlideUp">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Solicitação de Atendimento</h1>
         <p class="text-gray-600 text-sm mb-6 text-center">Preencha os dados abaixo para que possamos atender você rapidamente.</p>
 
-        <form action="reportForm" method="POST" class="space-y-5">
+        <div id="msg-success" class="hidden mb-4 p-3 text-green-800 bg-green-100 rounded-lg text-center font-medium"></div>
+
+        <form id="reportForm" method="POST" class="space-y-5">
             <div>
                 <label for="nome" class="block text-gray-700 font-medium mb-2">Nome Completo</label>
                 <input type="text" id="nome" name="nome" required
@@ -67,29 +67,28 @@
             </div>
 
             <div class="pt-4">
-                        <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300">
-                            <i class="fas fa-paper-plane mr-2"></i> Solicitar Atendimento
-                        </button>
-                    </div>
+                <button type="submit"
+                        class="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300">
+                    <i class="fas fa-paper-plane mr-2"></i> Solicitar Atendimento
+                </button>
+            </div>
         </form>
     </div>
 
 <script>
-<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('reportForm');
+    const msg = document.getElementById('msg-success');
 
-    window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('form-container').classList.add('show');
-});
-
-    document.querySelector("#reportForm").addEventListener("submit", function (e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
 
         const dados = {
-            nome: document.querySelector("#nome").value.trim(),
-            email: document.querySelector("#email").value.trim(),
-            fone: document.querySelector("#telefone").value.trim(),
-            service: document.querySelector("#servico").value.trim(),
-            descri: document.querySelector("#descricao").value.trim(),
+            nome: document.getElementById("nome").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            fone: document.getElementById("telefone").value.trim(),
+            service: document.getElementById("servico").value.trim(),
+            descri: document.getElementById("descricao").value.trim(),
         };
 
         fetch("/api/solicite", {
@@ -100,8 +99,9 @@
         .then(res => res.json())
         .then(data => {
             if (data.status === "sucesso") {
-                alert("Solicitação enviada com sucesso!");
-                document.querySelector("#reportForm").reset();
+                msg.textContent = "Solicitação enviada com sucesso!";
+                msg.classList.remove('hidden');
+                form.reset();
             } else {
                 alert("Erro: " + data.mensagem);
             }
@@ -112,8 +112,7 @@
         });
     });
 });
-
-  </script>
+</script>
 
 </body>
 </html>
