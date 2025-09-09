@@ -4,34 +4,87 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 import os
 import json
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 CORS(app)
 
 if not firebase_admin._apps:
-    firebase_config = os.environ.get("FIREBASE_CREDENTIALS_JSON")
-    if not firebase_config:
-        raise ValueError("FIREBASE_CREDENTIALS_JSON não encontrada nas variáveis de ambiente.")
-    cred = credentials.Certificate(json.loads(firebase_config))
-    firebase_admin.initialize_app(cred)
+    try:
+        firebase_json = os.environ.get("FIREBASE_CREDENTIALS")
+        if firebase_json:
+            cred_dict = json.loads(firebase_json)
+            cred = credentials.Certificate(cred_dict)
+            firebase_admin.initialize_app(cred)
+            print("✅ Firebase conectado com sucesso")
+        else:
+            print("❌ A variável de ambiente FIREBASE_CREDENTIALS não está definida.")
+    except Exception as e:
+        print("❌ Erro ao inicializar Firebase:", e)
 
 db = firestore.client()
-collection = db.collection("denuncias")
+colecao = 'dbSolicitacoes'
 
-@app.route("/api/denuncia", methods=["POST"])
+def enviar_email_denuncia(dados_denuncia):
+    sender_email = os.environ.get("EMAIL_USER")
+    sender_password = os.environ.get("EMAIL_PASS")
+    receiver_email = os.environ.get("EMAIL_RECEIVER") 
+
+    if not all([sender_email, sender_password, receiver_email]):
+        print("❌ Variáveis de ambiente de e-mail não definidas (EMAIL_USER, EMAIL_PASS, EMAIL_RECEIVER).")
+        return False
+
+    msg = MIMEMultipart()
+    msg['From'] = sender_email
+    msg['To'] = receiver_email
+    msg['Subject'] = "Nova Solicitação de atendimento recebida!"
+
+    body = f"""
+    Uma nova Solicitação de atendimento foi registrada no sistema.
+
+    Detalhes da solicitação:
+    --------------------
+    """
+    for key, value in dados_denuncia.items():
+        # A correção está aqui: firestore.SERVER_TIMESTAMP é um valor, não um tipo.
+        # Deve-se comparar com '==' em vez de usar isinstance().
+        if key == 'dataEnvio' and value == firestore.SERVER_TIMESTAMP:
+            body += f"{key}: (Definido pelo Servidor Firestore)\n"
+        else:
+            body += f"{key}: {value}\n"
+
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        text = msg.as_string()
+        server.sendmail(sender_email, receiver_email, text)
+        server.quit()
+        print("✅ E-mail de denúncia enviado com sucesso!")
+        return True
+    except Exception as e:
+        print(f"❌ Erro ao enviar e-mail de denúncia: {e}")
+        return False
+
+@app.route("/api/solicite", methods=["POST"])
 def receber_denuncia():
-    data = request.json
-    required_fields = ["crimeType", "location", "description"]
-    if not all(field in data and data[field] for field in required_fields):
-        return jsonify({"success": False, "error": "Campos obrigatórios ausentes."}), 400
+    try:
+        dados = request.json
+        if not dados:
+            return jsonify({"status": "erro", "mensagem": "Nenhum dado JSON fornecido"}), 400
 
-    doc_ref = collection.document()
-    doc_ref.set({
-        "tipo": data["crimeType"],
-        "local": data["location"],
-        "descricao": data["description"],
-        "anonimo": data.get("anonymous", True),
-        "timestamp": firestore.SERVER_TIMESTAMP
-    })
+        dados['dataEnvio'] = firestore.SERVER_TIMESTAMP
+        doc_ref = db.collection(colecao).add(dados)
+        enviar_email_denuncia(dados.copy())
 
-    return jsonify({"success": True, "message": "Denúncia registrada com sucesso."})
+        return jsonify({"status": "sucesso", "id": doc_ref[1].id}), 201
+    except Exception as e:
+        print("❌ Erro ao salvar denúncia:", e)
+        return jsonify({"status": "erro", "mensagem": str(e)}), 500
+
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
