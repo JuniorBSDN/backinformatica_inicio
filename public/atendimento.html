@@ -3,116 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitação de Atendimento - Back Informática</title>
+    <title>conselhotutelarvigia_denuncia</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome para ícone do botão -->
-    <script src="https://kit.fontawesome.com/SEU_CODIGO_KIT.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Animação fade-in e slide-up */
-        @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
         }
-        .animate-fadeSlideUp {
-            animation: fadeSlideUp 0.8s ease forwards;
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .emergency-btn {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+            }
         }
     </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body class="font-sans bg-gray-50">
 
-    <div id="form-container" class="bg-white shadow-xl rounded-xl p-8 max-w-lg w-full animate-fadeSlideUp">
-        <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Solicitação de Atendimento</h1>
-        <p class="text-gray-600 text-sm mb-6 text-center">Preencha os dados abaixo para que possamos atender você rapidamente.</p>
 
-        <div id="msg-success" class="hidden mb-4 p-3 text-green-800 bg-green-100 rounded-lg text-center font-medium"></div>
+    <!-- Report Section -->
+    <section id="report" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Faça uma Denúncia</h2>
+            <div class="max-w-3xl mx-auto bg-blue-50 rounded-xl shadow-md overflow-hidden p-6">
 
-        <form id="reportForm" method="POST" class="space-y-5">
-            <div>
-                <label for="nome" class="block text-gray-700 font-medium mb-2">Nome Completo</label>
-                <input type="text" id="nome" name="nome" required
-                       class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Como denunciar?</h3>
+                    <p class="text-gray-600 mb-4">Você pode denunciar casos de violação de direitos de crianças e adolescentes de forma anônima. Todas as denúncias são apuradas com sigilo absoluto.</p>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+                        <p class="text-yellow-700"><strong>Importante:</strong> Em casos de emergência ou risco iminente, ligue imediatamente para o <strong>Disque 100</strong> ou para a <strong>Polícia Militar (190).</strong>.</p>
+                    </div>
+                </div>
+
+
+                <form id="reportForm" class="space-y-6">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="reporterName" class="block text-sm font-medium text-gray-700 mb-1">Seu nome</label>
+                            <input type="text" id="reporterName" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Digite seu nome">
+                        </div>
+                        <div>
+                            <label for="reporterContact" class="block text-sm font-medium text-gray-700 mb-1">Contato(fone/email)</label>
+                            <input type="text" id="reporterContact" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Telefone ou e-mail para contato">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="reportType" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Violação*</label>
+                        <select id="reportType" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                            <option value="" disabled selected>Selecione o tipo de atendimennto</option>
+                            <option value="assistência Remota">Assistência Remota</option>
+                            <option value="atendimento field">Atendimento Field</option>
+                            <option value="assistência tecnica">Assistência técncica</option>
+                            <option value="Recargas">Recarga de Cartuchos HP</option>
+                            <option value="Documentos">Digitação de documentos</option>
+                            <option value="Projetos">Projetos de Softwares</option>
+                            <option value="outro">Outros</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="info" class="block text-sm font-medium text-gray-700 mb-1">Mais Informações</label>
+                        <textarea id="info" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Informe o tipo do sistema computacional" required></textarea>
+                    </div>
+
+                    <div>
+                        <label for="incidentDetails" class="block text-sm font-medium text-gray-700 mb-1">Detalhes da solicitação</label>
+                        <textarea id="incidentDetails" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Detalhes do ocorrido" required></textarea>
+                    </div>
+
+                    <div>
+                        <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Local do fato*</label>
+                        <input type="text" id="location" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Marca do Equipamento" required>
+                    </div>
+
+
+                     <div class="flex items-center">
+                        <input id="anonymous" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="anonymous" class="ml-2 block text-sm text-gray-700">Manter minha identidade em sigilo (mesmo que tenha fornecido dados)</label>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300">
+                            <i class="fas fa-paper-plane mr-2"></i> Enviar Denúncia
+                        </button>
+                    </div>
+                </form>
             </div>
-
-            <div>
-                <label for="email" class="block text-gray-700 font-medium mb-2">E-mail</label>
-                <input type="email" id="email" name="email" required
-                       class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
             </div>
+    </section>
 
-            <div>
-                <label for="telefone" class="block text-gray-700 font-medium mb-2">Telefone</label>
-                <input type="tel" id="telefone" name="telefone" required
-                       class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
-            </div>
 
-            <div>
-                <label for="servico" class="block text-gray-700 font-medium mb-2">Tipo de Serviço</label>
-                <select id="servico" name="servico" required
-                        class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
-                    <option value="">Selecione...</option>
-                    <option value="field_service">Atendimento Field Service</option>
-                    <option value="assistencia_remota">Assistência Remota</option>
-                    <option value="assistencia_tecnica">Assistência Técnica</option>
-                    <option value="digitacao_documentos">Digitação de Documentos</option>
-                    <option value="projeto_software">Projetos de Software</option>
-                    <option value="outros">Outros</option>
-                </select>
-            </div>
+ <script>
+ document.querySelector("#reportForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-            <div>
-                <label for="descricao" class="block text-gray-700 font-medium mb-2">Descrição do Problema / Solicitação</label>
-                <textarea id="descricao" name="descricao" rows="4" required
-                          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                          placeholder="Descreva detalhadamente o serviço que você precisa..."></textarea>
-            </div>
+  const dados = {
+    tipo: document.querySelector("#reportType").value.trim(),
+    vitima: document.querySelector("#victimInfo").value.trim(),
+    incidente: document.querySelector("#incidentDetails").value.trim(),
+    local: document.querySelector("#location").value.trim(),
+    nome: document.querySelector("#reporterName").value.trim(),
+    contato: document.querySelector("#reporterContact").value.trim(),
+    anonimo: document.querySelector("#anonymous").checked,
+  };
 
-            <div class="pt-4">
-                <button type="submit"
-                        class="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300">
-                    <i class="fas fa-paper-plane mr-2"></i> Solicitar Atendimento
-                </button>
-            </div>
-        </form>
-    </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('reportForm');
-    const msg = document.getElementById('msg-success');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const dados = {
-            nome: document.getElementById("nome").value.trim(),
-            email: document.getElementById("email").value.trim(),
-            fone: document.getElementById("telefone").value.trim(),
-            service: document.getElementById("servico").value.trim(),
-            descri: document.getElementById("descricao").value.trim(),
-        };
-
-        fetch("/api/solicite", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(dados)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === "sucesso") {
-                msg.textContent = "Solicitação enviada com sucesso!";
-                msg.classList.remove('hidden');
-                form.reset();
-            } else {
-                alert("Erro: " + data.mensagem);
-            }
-        })
-        .catch(err => {
-            console.error("Erro:", err);
-            alert("Erro de conexão ao enviar a solicitação.");
-        });
-    });
+  fetch("/api/solicite", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dados)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === "sucesso") {
+      alert("Denúncia enviada com sucesso!");
+      document.querySelector("#reportForm").reset();
+    } else {
+      alert("Erro: " + data.mensagem);
+    }
+  })
+  .catch(err => {
+    console.error("Erro:", err);
+    alert("Erro de conexão ao enviar a solicitação.");
+  });
 });
-</script>
-
+  </script>
 </body>
+
 </html>
