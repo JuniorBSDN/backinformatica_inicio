@@ -39,12 +39,12 @@ def enviar_email_denuncia(dados_denuncia):
     msg = MIMEMultipart()
     msg['From'] = sender_email
     msg['To'] = receiver_email
-    msg['Subject'] = "Nova Denúncia Recebida!"
+    msg['Subject'] = "Nova Solicitação de atendimennto!"
 
     body = f"""
-    Uma nova denúncia foi registrada no sistema.
+    Uma nova Solicictação de atendimento foi registrada no sistema.
 
-    Detalhes da Denúncia:
+    Detalhes da Solicitação:
     --------------------
     """
     for key, value in dados_denuncia.items():
