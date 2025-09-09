@@ -71,7 +71,7 @@ def enviar_email_denuncia(dados_denuncia):
         return False
 
 @app.route("/api/solicite", methods=["POST"])
-def receber_denuncia():
+def solicite():
     try:
         dados = request.json
         if not dados:
