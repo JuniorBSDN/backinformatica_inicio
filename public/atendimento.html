@@ -73,40 +73,40 @@
     </div>
 
 <script>
-   // Adiciona a classe 'show' após a página carregar para animação
-        window.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('form-container').classList.add('show');
-        });
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('form-container').classList.add('show');
 
     document.querySelector("#reportForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+        e.preventDefault();
 
-  const dados = {
-    nome: document.querySelector("#nome").value.trim(),
-    email: document.querySelector("#email").value.trim(),
-    fone: document.querySelector("#telefone").value.trim(),
-    service: document.querySelector("#servico").value.trim(),
-    descri: document.querySelector("#descricao").value.trim(),
-  };
+        const dados = {
+            nome: document.querySelector("#nome").value.trim(),
+            email: document.querySelector("#email").value.trim(),
+            fone: document.querySelector("#telefone").value.trim(),
+            service: document.querySelector("#servico").value.trim(),
+            descri: document.querySelector("#descricao").value.trim(),
+        };
 
-  fetch("/api/solicite", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(dados)
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === "sucesso") {
-      alert("Denúncia enviada com sucesso!");
-      document.querySelector("#reportForm").reset();
-    } else {
-      alert("Erro: " + data.mensagem);
-    }
-  })
-  .catch(err => {
-    console.error("Erro:", err);
-    alert("Erro de conexão ao enviar a solicitação.");
-  });
+        fetch("/api/solicite", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dados)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === "sucesso") {
+                alert("Solicitação enviada com sucesso!");
+                document.querySelector("#reportForm").reset();
+            } else {
+                alert("Erro: " + data.mensagem);
+            }
+        })
+        .catch(err => {
+            console.error("Erro:", err);
+            alert("Erro de conexão ao enviar a solicitação.");
+        });
+    });
 });
 
   </script>
