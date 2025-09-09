@@ -7,15 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Animação inicial de fade-in e subir */
+
         .fade-slide-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .fade-slide-up.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-slide-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
@@ -74,6 +76,11 @@
 
 <script>
 <script>
+
+    window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('form-container').classList.add('show');
+});
+
     document.querySelector("#reportForm").addEventListener("submit", function (e) {
         e.preventDefault();
 
