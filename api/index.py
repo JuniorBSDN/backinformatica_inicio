@@ -11,7 +11,6 @@ from email.mime.multipart import MIMEMultipart
 app = Flask(__name__)
 CORS(app)
 
-# Inicializa Firebase
 if not firebase_admin._apps:
     try:
         firebase_json = os.environ.get("FIREBASE_CREDENTIALS")
@@ -21,12 +20,12 @@ if not firebase_admin._apps:
             firebase_admin.initialize_app(cred)
             print("✅ Firebase conectado com sucesso")
         else:
-            print("❌ FIREBASE_CREDENTIALS não definida")
+            print("❌ A variável de ambiente FIREBASE_CREDENTIALS não está definida.")
     except Exception as e:
         print("❌ Erro ao inicializar Firebase:", e)
 
 db = firestore.client()
-colecao = 'dbSolicitacoes'
+colecao = 'dbdenuncia'
 
 def enviar_email_denuncia(dados_denuncia):
     sender_email = os.environ.get("EMAIL_USER")
@@ -34,18 +33,25 @@ def enviar_email_denuncia(dados_denuncia):
     receiver_email = os.environ.get("EMAIL_RECEIVER") 
 
     if not all([sender_email, sender_password, receiver_email]):
-        print("❌ Variáveis de e-mail não definidas")
+        print("❌ Variáveis de ambiente de e-mail não definidas (EMAIL_USER, EMAIL_PASS, EMAIL_RECEIVER).")
         return False
 
     msg = MIMEMultipart()
     msg['From'] = sender_email
     msg['To'] = receiver_email
-    msg['Subject'] = "Nova Solicitação de Atendimento"
+    msg['Subject'] = "Nova Denúncia Recebida!"
 
-    body = "Uma nova solicitação foi registrada no sistema:\n\n"
+    body = f"""
+    Uma nova denúncia foi registrada no sistema.
+
+    Detalhes da Denúncia:
+    --------------------
+    """
     for key, value in dados_denuncia.items():
+        # A correção está aqui: firestore.SERVER_TIMESTAMP é um valor, não um tipo.
+        # Deve-se comparar com '==' em vez de usar isinstance().
         if key == 'dataEnvio' and value == firestore.SERVER_TIMESTAMP:
-            body += f"{key}: (definido pelo servidor Firestore)\n"
+            body += f"{key}: (Definido pelo Servidor Firestore)\n"
         else:
             body += f"{key}: {value}\n"
 
@@ -55,37 +61,30 @@ def enviar_email_denuncia(dados_denuncia):
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
         server.login(sender_email, sender_password)
-        server.sendmail(sender_email, receiver_email, msg.as_string())
+        text = msg.as_string()
+        server.sendmail(sender_email, receiver_email, text)
         server.quit()
-        print("✅ E-mail enviado com sucesso")
+        print("✅ E-mail de denúncia enviado com sucesso!")
         return True
     except Exception as e:
-        print("❌ Erro ao enviar e-mail:", e)
+        print(f"❌ Erro ao enviar e-mail de denúncia: {e}")
         return False
 
-@app.route("/api/solicite", methods=["POST"])
-def solicite():
+@app.route("/api/denuncias", methods=["POST"])
+def receber_denuncia():
     try:
         dados = request.json
         if not dados:
             return jsonify({"status": "erro", "mensagem": "Nenhum dado JSON fornecido"}), 400
 
-        # Adiciona timestamp do servidor
         dados['dataEnvio'] = firestore.SERVER_TIMESTAMP
-
-        # Salva no Firestore
         doc_ref = db.collection(colecao).add(dados)
-
-        # Envia e-mail
         enviar_email_denuncia(dados.copy())
 
-        # Retorna sucesso com ID do documento
         return jsonify({"status": "sucesso", "id": doc_ref[1].id}), 201
-
     except Exception as e:
-        print("❌ Erro ao processar solicitação:", e)
+        print("❌ Erro ao salvar denúncia:", e)
         return jsonify({"status": "erro", "mensagem": str(e)}), 500
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(debug=True, host='0.0.0.0', port=port)
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
